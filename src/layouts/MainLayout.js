@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
+import MainMenu from 'components/MainMenu/MainMenu';
 
 function MainLayout ({ children }) {
   return (
-    <div className='page-container'>
-      <div className='view-container'>
-        <Link to='/'>Home</Link>
+    <div className="page-container">
+      <div className="view-container">
+        <MainMenu />
         {children}
       </div>
     </div>
