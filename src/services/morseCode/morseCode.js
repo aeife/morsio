@@ -17,10 +17,6 @@ export default function (settings) {
   gainNode.connect(context.destination);
   gainNode.gain.value = 0;
 
-  Object.observe({val: gainNode.gain.value}, change => {
-    console.log('CHANGE');
-  });
-
   const oscillatorNode = context.createOscillator();
   oscillatorNode.type = settings.type;
   oscillatorNode.frequency.value = settings.frequency;

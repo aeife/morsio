@@ -1,0 +1,13 @@
+$inactiveColor: grey;
+$activeColor: red;
+
+.display {
+  width: 100px;
+  height: 100px;
+  background-color: $inactiveColor;
+}
+
+.activeDisplay {
+  composes: display;
+  background-color: $activeColor;
+}
