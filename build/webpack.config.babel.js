@@ -6,7 +6,7 @@ import autoprefixer from 'autoprefixer';
 import config from '../config';
 
 const webpackConfig = {
-  name: 'reduxBoilerplate',
+  name: 'morsio',
   target: 'web',
   devtool: 'source-map',
   resolve: {
