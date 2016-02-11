@@ -3,11 +3,9 @@ import MainMenu from 'components/MainMenu/MainMenu';
 
 function MainLayout ({ children }) {
   return (
-    <div className="page-container">
-      <div className="view-container">
+    <div>
         <MainMenu />
         {children}
-      </div>
     </div>
   );
 }
