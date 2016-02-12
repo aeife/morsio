@@ -22,7 +22,7 @@ export default class HomeView extends React.Component {
       <div>
         <h1>Home View</h1>
         <MessageInput setMessage={this.props.setMessage} />
-        <MorseCodePlayer message={this.props.userMorseCode.get('message')} />
+        <MorseCodePlayer message={this.props.userMorseCode.get('message')} settings={this.props.userMorseCode.get('settings')} />
         <MorseCodeSettings settings={this.props.userMorseCode.get('settings')} setSettings={this.props.setSettings} />
       </div>
     );

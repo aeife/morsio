@@ -13,14 +13,14 @@ export default class MorseCodePlayer extends React.Component {
     this.morseCode.registerChangeCallback(this.onMorseCodeStateChange);
   }
 
-  // TODO: update player settings on settings change
-
   static propTypes = {
-    message: React.PropTypes.string.isRequired
+    message: React.PropTypes.string.isRequired,
+    settings: React.PropTypes.object
   };
 
   onPlay = (e) => {
     e.preventDefault();
+    this.morseCode.setSettings(this.props.settings.toJS());
     this.morseCode.play(this.props.message);
   };
 
@@ -31,6 +31,7 @@ export default class MorseCodePlayer extends React.Component {
   render () {
     return (
       <div>
+        <h2>Morse Player</h2>
         <button onClick={this.onPlay} styleName='btnDefault'>Play</button>
         <div styleName={this.state.active ? 'activeDisplay' : 'inactiveDisplay'}></div>
       </div>

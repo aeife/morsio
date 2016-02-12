@@ -9,26 +9,24 @@ const defaultSettings = {
 };
 
 export default function (settings) {
-  settings = Object.assign({}, defaultSettings, settings);
-
   const context = new (window.AudioContext || window.webkitAudioContext);
-
   const gainNode = context.createGain();
   gainNode.connect(context.destination);
   gainNode.gain.value = 0;
 
   const oscillatorNode = context.createOscillator();
-  oscillatorNode.type = settings.type;
-  oscillatorNode.frequency.value = settings.frequency;
   oscillatorNode.connect(gainNode);
   oscillatorNode.start(0);
+
+  setSettings(settings);
 
   let changeCallback = function () {};
   let timeslot = 0;
 
   return {
     play,
-    registerChangeCallback
+    registerChangeCallback,
+    setSettings
   };
 
   function registerChangeCallback (cb) {
@@ -89,5 +87,12 @@ export default function (settings) {
       });
       playSound(0, 3 + settings.farnsworth);
     });
+  }
+
+  function setSettings (newSettings) {
+    settings = Object.assign({}, defaultSettings, newSettings);
+
+    oscillatorNode.type = settings.type;
+    oscillatorNode.frequency.value = settings.frequency;
   }
 }
