@@ -1,13 +1,17 @@
 $inactiveColor: grey;
 $activeColor: red;
 
-.display {
+.morseDisplay {
   width: 100px;
   height: 100px;
+}
+
+.inactiveDisplay {
+  composes: morseDisplay;
   background-color: $inactiveColor;
 }
 
 .activeDisplay {
-  composes: display;
+  composes: morseDisplay;
   background-color: $activeColor;
 }

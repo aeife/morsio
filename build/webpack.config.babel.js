@@ -2,13 +2,14 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path';
 import autoprefixer from 'autoprefixer';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 import config from '../config';
 
 const webpackConfig = {
   name: 'morsio',
   target: 'web',
-  devtool: 'source-map',
+  devtool: config.devtools,
   resolve: {
     root: config.dir_src,
     extensions: ['', '.js']
@@ -19,11 +20,11 @@ const webpackConfig = {
 webpackConfig.entry = {
     app: config.hmr
       ? [config.dir_src + '/index.js', 'webpack-hot-middleware/client']
-      : [config.dir_src + '/index.js'],
+      : [config.dir_src + '/index.js']
 };
 
 webpackConfig.output = {
-  filename: 'app.bundle.js',
+  filename: `[name].bundle.js`,
   path: config.dir_dist,
   publicPath: '/'
 }
@@ -35,19 +36,19 @@ webpackConfig.devServer = {
 };
 
 webpackConfig.plugins = [
-  new webpack.DefinePlugin(config.globals),
   new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.DefinePlugin(config.globals),
   new HtmlWebpackPlugin({
     template: config.dir_src + '/index.html',
     filename: 'index.html',
     inject: 'body'
   })
-]
+];
 if (config.hmr) {
   webpackConfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  )
+  );
 }
 if (config.env === 'production') {
   webpackConfig.plugins.push(
@@ -58,22 +59,41 @@ if (config.env === 'production') {
       },
       comments: false
     })
-  )
+  );
+
+  webpackConfig.plugins.push(
+    new ExtractTextPlugin('app.css', {
+      allChunks: true
+    })
+  );
 }
 
 webpackConfig.module.loaders = [{
   test: /\.js$/,
   exclude: /node_modules/,
   loader: 'babel'
-}, {
-  test: /\.scss?$/,
-  loaders: [
-    "style",
-    'css?modules&localIdentName=[name]---[local]---[hash:base64:5]&sourceMap&importLoaders=1',
-    'postcss',
-    'sass?sourceMap'
-  ]
 }];
+if (config.env === 'production') {
+  webpackConfig.module.loaders.push({
+    test: /\.scss?$/,
+    loader: ExtractTextPlugin.extract('style?sourceMap', [
+      'css?modules&localIdentName=[name]---[local]---[hash:base64:5]&sourceMap&importLoaders=1',
+      'postcss',
+      'sass?sourceMap'
+    ])
+  });
+} else {
+  webpackConfig.module.loaders.push({
+    test: /\.scss?$/,
+    loaders: [
+      'style?sourceMap',
+      'css?modules&localIdentName=[name]---[local]---[hash:base64:5]&sourceMap&importLoaders=1',
+      'postcss',
+      'sass?sourceMap'
+    ]
+  });
+}
+
 webpackConfig.postcss = function () {
   return [autoprefixer];
 }

@@ -32,7 +32,7 @@ export default class MorseCodePlayer extends React.Component {
     return (
       <div>
         <button onClick={this.onPlay} styleName='btnDefault'>Play</button>
-        <div styleName={this.state.active ? 'activeDisplay' : 'display'}></div>
+        <div styleName={this.state.active ? 'activeDisplay' : 'inactiveDisplay'}></div>
       </div>
     );
   }
