@@ -1,6 +1,8 @@
 import React from 'react';
 import morseCode from 'services/morseCode/morseCode';
+import CSSModules from 'react-css-modules';
 import style from './MorseCodePlayer.scss';
+import buttonStyles from 'styles/buttons.scss';
 
 export default class MorseCodePlayer extends React.Component {
   constructor (props) {
@@ -29,11 +31,11 @@ export default class MorseCodePlayer extends React.Component {
   render () {
     return (
       <div>
-        <button onClick={this.onPlay}>Play</button>
-        <div className={this.state.active ? style.activeDisplay : style.display}></div>
+        <button onClick={this.onPlay} styleName='btnDefault'>Play</button>
+        <div styleName={this.state.active ? 'activeDisplay' : 'display'}></div>
       </div>
     );
   }
 }
 
-export default MorseCodePlayer;
+export default CSSModules(MorseCodePlayer, Object.assign({}, style, buttonStyles));
