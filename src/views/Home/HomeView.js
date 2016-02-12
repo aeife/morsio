@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import MessageInput from 'components/MessageInput/MessageInput';
 import MorseCodePlayer from 'components/MorseCodePlayer/MorseCodePlayer';
+import MorseCodeSettings from 'components/MorseCodeSettings/MorseCodeSettings';
 import { actions as userMorseCodeActions } from 'redux/actions/userMorseCode';
 
 export default class HomeView extends React.Component {
@@ -12,6 +13,7 @@ export default class HomeView extends React.Component {
 
   static propTypes = {
     setMessage: React.PropTypes.func,
+    setSettings: React.PropTypes.func,
     userMorseCode: React.PropTypes.object
   };
 
@@ -21,6 +23,7 @@ export default class HomeView extends React.Component {
         <h1>Home View</h1>
         <MessageInput setMessage={this.props.setMessage} />
         <MorseCodePlayer message={this.props.userMorseCode.get('message')} />
+        <MorseCodeSettings settings={this.props.userMorseCode.get('settings')} setSettings={this.props.setSettings} />
       </div>
     );
   }

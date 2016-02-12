@@ -11,6 +11,8 @@ export default class MorseCodePlayer extends React.Component {
     this.morseCode.registerChangeCallback(this.onMorseCodeStateChange);
   }
 
+  // TODO: update player settings on settings change
+
   static propTypes = {
     message: React.PropTypes.string.isRequired
   };
