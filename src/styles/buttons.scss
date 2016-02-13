@@ -1,3 +1,23 @@
+@import './variables.scss';
+
+$default-btn-bg-color: #DADADA;
+
 .btnDefault {
   composes: pure-button from 'pure-css/lib/buttons.css';
+  background-color: $default-btn-bg-color;
+
+  &:hover {
+    background-color: darken($default-btn-bg-color, 5%);
+    background-image: none;
+  }
+}
+
+.btnPrimary {
+  composes: pure-button pure-button-primary from 'pure-css/lib/buttons.css';
+  composes: btnDefault;
+  background-color: $main-color;
+
+  &:hover {
+    background-color: darken($main-color, 5%);
+  }
 }

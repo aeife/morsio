@@ -1,0 +1,22 @@
+.mainHeading {
+  text-align: center;
+}
+
+.subHeading {
+  text-align: center;
+  color: lighten(#000, 70%);
+}
+
+.devider {
+  width: 70%;
+  border-color: darken(#fff, 20%);
+  border-top: none;
+  margin: 40px auto;
+}
+
+.generateBtn {
+  composes: btnPrimary from '../../styles/buttons.scss';
+  display: block;
+  margin: 0 auto;
+  padding: 1.5em 6em;
+}

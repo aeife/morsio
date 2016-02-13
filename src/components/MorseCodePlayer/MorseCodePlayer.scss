@@ -1,9 +1,49 @@
-$inactiveColor: grey;
+@import '../../styles/variables';
+
 $activeColor: red;
+$player-color: #4A4A4A;
+$inactiveColor: lighten($player-color, 30%);
+
+.playerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4A4A4A;
+  padding: 11px;
+  max-width: 478px;
+  margin: 20px auto;
+  width: 80%;
+
+  a {
+    padding: 0 20px;
+    font-size: 1.8em;
+    color: lighten($player-color, 30%);
+
+    &:hover {
+      color: lighten($player-color, 50%);
+    }
+  }
+}
+
+.controls, .displayArea {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.devider {
+  width: 1px;
+  height: 40px;
+  background-color: grey;
+}
 
 .morseDisplay {
   width: 100px;
-  height: 100px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 0 20px;
+  box-shadow: inset 0 0 42px rgba(0, 0, 0, 0.93);
 }
 
 .inactiveDisplay {

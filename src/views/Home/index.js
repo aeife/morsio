@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import CSSModules from 'react-css-modules';
+import style from './Home.scss';
 import MessageInput from 'components/MessageInput/MessageInput';
 import MorseCodePlayer from 'components/MorseCodePlayer/MorseCodePlayer';
 import MorseCodeSettings from 'components/MorseCodeSettings/MorseCodeSettings';
@@ -31,11 +33,13 @@ class HomeView extends React.Component {
   render () {
     return (
       <div>
-        <h1>Home View</h1>
+        <h1 styleName='mainHeading'>Morsio</h1>
+        <p styleName='subHeading'>generate and share morse codes</p>
+        <hr styleName='devider' />
         <MessageInput setMessage={this.props.setMessage} />
         <MorseCodePlayer message={this.props.userMorseCode.get('message')} settings={this.props.userMorseCode.get('settings')} />
+        <button styleName='generateBtn' onClick={this.generate}>Generate</button>
         <MorseCodeSettings settings={this.props.userMorseCode.get('settings')} setSettings={this.props.setSettings} />
-        <button onClick={this.generate}>Generate</button>
       </div>
     );
   }
@@ -47,4 +51,4 @@ function select (state) {
   };
 }
 
-export default connect(select, {...userMorseCodeActions, pushPath})(HomeView);
+export default connect(select, {...userMorseCodeActions, pushPath})(CSSModules(HomeView, style));

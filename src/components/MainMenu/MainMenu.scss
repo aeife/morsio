@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+$nav-link-color: #fff;
+
+.nav {
+  composes: pure-menu pure-menu-horizontal from 'pure-css/lib/menus.css';
+  background-color: $main-color;
+}
+
+.navList
+{
+  composes: pure-menu-list from 'pure-css/lib/menus.css';
+}
+
+.navListRight {
+  composes: navList;
+  float: right;
+}
+
+.navItem {
+  composes: pure-menu-item from 'pure-css/lib/menus.css';
+}
+
+.navLink {
+  composes: pure-menu-link from 'pure-css/lib/menus.css';
+  padding: 1.1em;
+  color: darken($nav-link-color, 10%);
+
+  &:hover, &:focus {
+    background-color: transparent;
+    color: $nav-link-color;
+    outline: none;
+  }
+}
+
+.activeNavLink {
+  background-color: transparent;
+  color: $nav-link-color;
+  outline: none;
+}

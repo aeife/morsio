@@ -30,10 +30,16 @@ export default class MorseCodePlayer extends React.Component {
 
   render () {
     return (
-      <div>
-        <h2>Morse Player</h2>
-        <button onClick={this.onPlay} styleName='btnDefault'>Play</button>
-        <div styleName={this.state.active ? 'activeDisplay' : 'inactiveDisplay'}></div>
+      <div styleName='playerWrapper'>
+        <div styleName='controls'>
+          <a href onClick={this.onPlay}><i className='fa fa-play'></i></a>
+          <a href><i className='fa fa-pause'></i></a>
+          <a href><i className='fa fa-stop'></i></a>
+        </div>
+        <div styleName='devider'></div>
+        <div styleName='displayArea'>
+          <div styleName={this.state.active ? 'activeDisplay' : 'inactiveDisplay'}></div>
+        </div>
       </div>
     );
   }
