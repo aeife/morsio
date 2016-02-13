@@ -10,8 +10,11 @@ import proxyMiddleware from 'http-proxy-middleware';
 const app = express();
 const compiler = webpack(config);
 
-app.use(fallback())
+app.use(proxyMiddleware('/api', {
+  target: 'http://localhost:9000'
+}));
 app.use(express.static(path.resolve('./dist')));
+app.use(fallback())
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
   stats: {
@@ -20,8 +23,5 @@ app.use(webpackDevMiddleware(compiler, {
   hot: true
 }));
 app.use(webpackHotMiddleware(compiler));
-app.use(proxyMiddleware('/api', {
-  target: 'http://localhost:9000'
-}));
 
 app.listen(8080, '0.0.0.0');

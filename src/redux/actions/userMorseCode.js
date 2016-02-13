@@ -17,6 +17,10 @@ export const requestUrlId = (message, settings) => {
   return dispatch => {
     return fetch('/api/v1/morseCode', {
       method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         message,
         settings
