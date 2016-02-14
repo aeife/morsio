@@ -1,12 +1,31 @@
 import {getMorseCodeForCharacter} from './morseCodeAlphabet';
 
-const defaultSettings = {
+export const defaultDifficulty = 3;
+
+export const difficultySteps = {
+  1: {
+    wpm: 5
+  },
+  2: {
+    wpm: 8
+  },
+  3: {
+    wpm: 13
+  },
+  4: {
+    wpm: 16
+  },
+  5: {
+    wpm: 20
+  }
+};
+
+export const defaultSettings = Object.assign({}, {
   volume: 1,
   farnsworth: 0,
-  wpm: 13,
   frequency: 440,
   type: 'sine'
-};
+}, difficultySteps[defaultDifficulty]);
 
 export default function (settings) {
   const context = new (window.AudioContext || window.webkitAudioContext);

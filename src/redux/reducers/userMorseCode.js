@@ -1,12 +1,10 @@
 import { SET_MESSAGE, SET_SETTINGS, RECEIVE_URL_ID } from 'redux/actions/userMorseCode';
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
+import { defaultSettings } from 'services/morseCode/morseCode';
 
 const defaultState = Map({
   message: '',
-  settings: Map({
-    frequence: 440,
-    wpm: 13
-  })
+  settings: fromJS(defaultSettings)
 });
 
 export default function userMorseCode (state = defaultState, action) {

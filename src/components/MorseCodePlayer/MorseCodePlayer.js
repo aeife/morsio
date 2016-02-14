@@ -24,6 +24,14 @@ export default class MorseCodePlayer extends React.Component {
     this.morseCode.play(this.props.message);
   };
 
+  onPause = (e) => {
+    e.preventDefault();
+  };
+
+  onStop = (e) => {
+    e.preventDefault();
+  };
+
   onMorseCodeStateChange = newValue => {
     this.setState({active: !!newValue});
   };
@@ -33,8 +41,8 @@ export default class MorseCodePlayer extends React.Component {
       <div styleName='playerWrapper'>
         <div styleName='controls'>
           <a href onClick={this.onPlay}><i className='fa fa-play'></i></a>
-          <a href><i className='fa fa-pause'></i></a>
-          <a href><i className='fa fa-stop'></i></a>
+          <a href onClick={this.onPause}><i className='fa fa-pause'></i></a>
+          <a href onClick={this.onStop}><i className='fa fa-stop'></i></a>
         </div>
         <div styleName='devider'></div>
         <div styleName='displayArea'>
