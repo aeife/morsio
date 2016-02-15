@@ -7,6 +7,8 @@ import { difficultySteps, defaultDifficulty } from 'services/morseCode/morseCode
 export default class GeneralDifficulty extends React.Component {
   constructor (props) {
     super(props);
+
+    this.state = {difficulty: defaultDifficulty};
   }
 
   static propTypes = {
@@ -14,8 +16,8 @@ export default class GeneralDifficulty extends React.Component {
   };
 
   onDifficultyChange = (difficulty) => {
-    console.log(difficulty);
     this.props.setSettings(difficultySteps[difficulty]);
+    this.setState({difficulty});
   };
 
   render () {
@@ -24,7 +26,7 @@ export default class GeneralDifficulty extends React.Component {
         <label htmlFor='difficulty' styleName='difficultyLabel'>Difficulty</label>
         <div styleName='difficultyInput'>
           <Rating name='difficulty' onChange={this.onDifficultyChange}
-                  initialRate={defaultDifficulty} empty='fa fa-circle-o fa-lg' full='fa fa-circle fa-lg'/>
+                  initialRate={this.state.difficulty} empty='fa fa-circle-o fa-lg' full='fa fa-circle fa-lg'/>
         </div>
       </div>
     );

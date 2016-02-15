@@ -22,7 +22,7 @@ export default class WPMSetting extends React.Component {
       <div>
         <div styleName='settingsControlGroup'>
           <label htmlFor='wpm' styleName='settingsLabel'>WPM</label>
-          <Rcslider min={0} max={25} value={this.props.settings.get('wpm')} onChange={this.onSettingsChange} styleName='settingsInput'/>
+          <Rcslider min={5} max={25} value={this.props.settings.get('wpm')} onChange={this.onSettingsChange} styleName='settingsInput'/>
         </div>
 
       </div>

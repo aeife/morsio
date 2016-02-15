@@ -5,9 +5,10 @@ $default-btn-bg-color: #DADADA;
 .btnDefault {
   composes: pure-button from 'pure-css/lib/buttons.css';
   background-color: $default-btn-bg-color;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
   &:hover {
-    background-color: darken($default-btn-bg-color, 5%);
+    background-color: lighten($default-btn-bg-color, 5%);
     background-image: none;
   }
 }
@@ -16,8 +17,9 @@ $default-btn-bg-color: #DADADA;
   composes: pure-button pure-button-primary from 'pure-css/lib/buttons.css';
   composes: btnDefault;
   background-color: $main-color;
+  transition: 0.1s background-color linear;
 
   &:hover {
-    background-color: darken($main-color, 5%);
+    background-color: lighten($main-color, 5%);
   }
 }
