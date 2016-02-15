@@ -14,14 +14,18 @@ export default class GeneralDifficulty extends React.Component {
   };
 
   onDifficultyChange = (difficulty) => {
+    console.log(difficulty);
     this.props.setSettings(difficultySteps[difficulty]);
   };
 
   render () {
     return (
-      <div styleName='settingsControlGroup'>
-        <label htmlFor='difficulty'>Difficulty</label>
-        <Rating name='difficulty' onChange={this.onDifficultyChange} initialRate={defaultDifficulty} empty='fa fa-circle-o fa-lg' full='fa fa-circle fa-lg'/>
+      <div styleName='difficultyGroup'>
+        <label htmlFor='difficulty' styleName='difficultyLabel'>Difficulty</label>
+        <div styleName='difficultyInput'>
+          <Rating name='difficulty' onChange={this.onDifficultyChange}
+                  initialRate={defaultDifficulty} empty='fa fa-circle-o fa-lg' full='fa fa-circle fa-lg'/>
+        </div>
       </div>
     );
   }

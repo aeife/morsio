@@ -92,6 +92,14 @@ if (config.env === 'production') {
       'sass?sourceMap'
     ]
   });
+
+  webpackConfig.module.loaders.push({
+    test: /\.css?$/,
+    loaders: [
+      'style?sourceMap',
+      'css'
+    ]
+  });
 }
 
 webpackConfig.postcss = function () {

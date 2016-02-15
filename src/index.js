@@ -6,6 +6,7 @@ import { createHistory } from 'history';
 import { syncReduxAndRouter } from 'redux-simple-router';
 
 import 'styles/core.scss';
+import 'rc-slider/assets/index.css';
 
 import Root from './containers/Root';
 import routes from 'routes/index';

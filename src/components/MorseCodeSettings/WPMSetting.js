@@ -1,6 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './MorseCodeSettings.scss';
+import Rcslider from 'rc-slider';
 
 export default class WPMSetting extends React.Component {
   constructor (props) {
@@ -12,16 +13,18 @@ export default class WPMSetting extends React.Component {
     setSettings: React.PropTypes.func.isRequired
   };
 
-  onSettingsChange = (e) => {
-    e.preventDefault();
-    this.props.setSettings({wpm: this.refs.wpm.value});
+  onSettingsChange = value => {
+    this.props.setSettings({wpm: value});
   };
 
   render () {
     return (
-      <div styleName='settingsControlGroup'>
-        <label htmlFor='wpm'>WPM</label>
-        <input type='range' min='3' max='25' ref='wpm' name='wpm' onChange={this.onSettingsChange} value={this.props.settings.get('wpm')} />
+      <div>
+        <div styleName='settingsControlGroup'>
+          <label htmlFor='wpm' styleName='settingsLabel'>WPM</label>
+          <Rcslider min={0} max={25} value={this.props.settings.get('wpm')} onChange={this.onSettingsChange} styleName='settingsInput'/>
+        </div>
+
       </div>
     );
   }

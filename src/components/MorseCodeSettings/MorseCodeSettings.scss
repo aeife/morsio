@@ -1,11 +1,16 @@
 @import "../../styles/variables";
 
 .settingsForm {
-  composes: pure-form pure-form-aligned from 'pure-css/lib/forms.css';
+  width: 100%;
+  margin: 0 auto;
 
   &>p {
     margin: 0;
     padding: 10px;
+  }
+
+  fieldset {
+    border: none;
   }
 }
 
@@ -14,5 +19,29 @@
 }
 
 .settingsControlGroup {
-  composes: pure-control-group from 'pure-css/lib/forms.css';
+  composes: pure-g from 'pure-css/lib/grids.css';
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.settingsLabel {
+  composes: pure-u-1-3 from 'pure-css/lib/grids.css';
+}
+
+.settingsInput {
+  composes: pure-u-2-3 from 'pure-css/lib/grids.css';
+}
+
+.difficultyGroup {
+  text-align: left;
+  font-size: 1.5em;
+}
+
+.difficultyLabel {
+  padding-right: 40px;
+}
+
+.difficultyInput {
+  display: inline-block;
 }

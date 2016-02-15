@@ -1,6 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './MorseCodeSettings.scss';
+import Rcslider from 'rc-slider';
 
 export default class FrequencySetting extends React.Component {
   constructor (props) {
@@ -12,16 +13,15 @@ export default class FrequencySetting extends React.Component {
     setSettings: React.PropTypes.func.isRequired
   };
 
-  onSettingsChange = (e) => {
-    e.preventDefault();
-    this.props.setSettings({frequency: this.refs.frequency.value});
+  onSettingsChange = value => {
+    this.props.setSettings({frequency: value});
   };
 
   render () {
     return (
       <div styleName='settingsControlGroup'>
-        <label htmlFor='frequency'>Frequency</label>
-        <input type='range' min='200' max='1000' ref='frequency' name='frequency' onChange={this.onSettingsChange} value={this.props.settings.get('frequency')} />
+        <label htmlFor='frequency' styleName='settingsLabel'>Frequency</label>
+        <Rcslider min={200} max={1000} value={this.props.settings.get('frequency')} onChange={this.onSettingsChange} styleName='settingsInput'/>
       </div>
     );
   }

@@ -8,6 +8,7 @@ import MorseCodePlayer from 'components/MorseCodePlayer/MorseCodePlayer';
 import MorseCodeSettings from 'components/MorseCodeSettings/MorseCodeSettings';
 import { actions as userMorseCodeActions } from 'redux/actions/userMorseCode';
 import { pushPath } from 'redux-simple-router';
+import Rcslider from 'rc-slider';
 
 class HomeView extends React.Component {
   constructor (props) {
@@ -36,10 +37,12 @@ class HomeView extends React.Component {
         <h1 styleName='mainHeading'>Morsio</h1>
         <p styleName='subHeading'>generate and share morse codes</p>
         <hr styleName='devider' />
-        <MessageInput setMessage={this.props.setMessage} />
-        <MorseCodePlayer message={this.props.userMorseCode.get('message')} settings={this.props.userMorseCode.get('settings')} />
-        <button styleName='generateBtn' onClick={this.generate}>Generate</button>
-        <MorseCodeSettings settings={this.props.userMorseCode.get('settings')} setSettings={this.props.setSettings} />
+        <div styleName='containerSlim'>
+          <MessageInput setMessage={this.props.setMessage} />
+          <MorseCodePlayer message={this.props.userMorseCode.get('message')} settings={this.props.userMorseCode.get('settings')} />
+          <button styleName='generateBtn' onClick={this.generate}>Generate</button>
+          <MorseCodeSettings settings={this.props.userMorseCode.get('settings')} setSettings={this.props.setSettings} />
+        </div>
       </div>
     );
   }
