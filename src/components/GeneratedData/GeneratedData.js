@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
 import QrCode from './QrCode';
+import CSSModules from 'react-css-modules';
+import style from './GeneratedData.scss';
 
-export default class GeneratedData extends React.Component {
+class GeneratedData extends React.Component {
   constructor (props) {
     super(props);
     this.url = window.location.hostname + '/' + this.props.urlId;
@@ -15,14 +17,20 @@ export default class GeneratedData extends React.Component {
   render () {
     return (
       <div>
-        <h2>Generated Data</h2>
-        <p>your link:</p>
-        <Link to={'/' + this.props.urlId}>{this.url}</Link>
-        <p>your qr code:</p>
-        <QrCode text={this.url}></QrCode>
+        <div styleName='generatedDataWrapper'>
+          <div styleName='qrCodeSection'>
+            <QrCode text={this.url} />
+          </div>
+          <div styleName='linkSection'>
+            <h3>Your generated Link</h3>
+            <Link to={'/' + this.props.urlId} styleName='shareLink'>{this.url}</Link>
+            <p>Send someone this link to share your generated morse code.</p>
+            <p>Or use the QR Code. It directly leads to this page.</p>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default GeneratedData;
+export default CSSModules(GeneratedData, style);
