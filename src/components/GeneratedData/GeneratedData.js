@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
-import QRCode from 'qrcodejs';
+import QrCode from './QrCode';
 
 export default class GeneratedData extends React.Component {
   constructor (props) {
     super(props);
     this.url = window.location.hostname + '/' + this.props.urlId;
-  }
-
-  componentDidMount () {
-    new QRCode(document.getElementById('qrcode'), this.url);
   }
 
   static propTypes = {
@@ -23,7 +19,7 @@ export default class GeneratedData extends React.Component {
         <p>your link:</p>
         <Link to={'/' + this.props.urlId}>{this.url}</Link>
         <p>your qr code:</p>
-        <div id='qrcode'></div>
+        <QrCode text={this.url}></QrCode>
       </div>
     );
   }
