@@ -25,7 +25,7 @@ export default class MainMenu extends React.Component {
           </ul>
           <ul styleName='navListRight'>
             <li styleName='navItem'>
-              <Link to='/test3' styleName='navLink' activeClassName={style.activeNavLink}>Test3</Link>
+              <Link to='/about' styleName='navLink' activeClassName={style.activeNavLink}>About</Link>
             </li>
           </ul>
         </div>
