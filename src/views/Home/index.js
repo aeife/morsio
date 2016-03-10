@@ -41,6 +41,7 @@ class HomeView extends React.Component {
           <MessageInput setMessage={this.props.setMessage} />
           <MorseCodePlayer message={this.props.userMorseCode.get('message')} settings={this.props.userMorseCode.get('settings')} />
           <button styleName='generateBtn' onClick={this.generate}>Generate</button>
+          <hr styleName='devider' />
           <MorseCodeSettings settings={this.props.userMorseCode.get('settings')} setSettings={this.props.setSettings} />
         </div>
       </div>

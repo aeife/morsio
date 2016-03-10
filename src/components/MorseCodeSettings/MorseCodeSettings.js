@@ -32,9 +32,9 @@ export default class MorseCodeSettings extends React.Component {
       <form styleName='settingsForm'>
         <p>
           {!this.state.advanced ? (
-            <a href styleName='advancedLink' onClick={this.toggleAdvancedSettings}>advanced settings</a>
+            <a href styleName='advancedLink' onClick={this.toggleAdvancedSettings}><i className='fa fa-angle-right'></i> advanced settings</a>
           ) : (
-            <a href styleName='advancedLink' onClick={this.toggleAdvancedSettings}>simple settings</a>
+            <a href styleName='advancedLink' onClick={this.toggleAdvancedSettings}><i className='fa fa-angle-right'></i> simple settings</a>
           )}
         </p>
         {this.state.advanced ? (

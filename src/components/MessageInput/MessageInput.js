@@ -15,7 +15,7 @@ export default class MessageInput extends React.Component {
     return (
       <form styleName='form'>
         <label htmlFor='message'>Enter your message</label>
-        <textarea styleName='messageInput' name='message' rows='5' ref='messageInput' placeholder='your message' onChange={() => this.props.setMessage(this.refs.messageInput.value)}></textarea>
+        <textarea styleName='messageInput' name='message' rows='3' ref='messageInput' placeholder='your message' onChange={() => this.props.setMessage(this.refs.messageInput.value)}></textarea>
       </form>
     );
   }

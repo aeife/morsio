@@ -1,5 +1,16 @@
+@import './variables';
+
 .container {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+:global {
+  .rc-slider-handle {
+    border-color: $main-color;
+  }
+  .rc-slider-track {
+    background-color: $main-color;
+  }
 }

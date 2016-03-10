@@ -16,6 +16,7 @@
 
 .advancedLink {
   float: right;
+  text-decoration: none;
 }
 
 .settingsControlGroup {
@@ -44,4 +45,9 @@
 
 .difficultyInput {
   display: inline-block;
+  color: $main-color;
+  
+  &>span span {
+    margin: 0 5px;
+  }
 }
