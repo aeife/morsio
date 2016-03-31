@@ -2,6 +2,16 @@
 
 .generatedDataWrapper {
   display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column-reverse;
+    align-items: center;
+
+    .linkSection {
+        padding: 0 0 50px;
+    }
+  }
 }
 
 .qrCodeSection {
